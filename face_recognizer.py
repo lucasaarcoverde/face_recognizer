@@ -23,9 +23,9 @@ def draw_suspect(name, image, face_location):
     cv2.rectangle(image, (left, top), (right, bottom), (0, 0, 255), 2)
 
     # Draw a label with a name below the face
-    cv2.rectangle(image, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+    cv2.rectangle(image, (left, bottom-15), (right, bottom), (0, 0, 255), cv2.FILLED)
     font = cv2.FONT_HERSHEY_DUPLEX
-    cv2.putText(image, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+    cv2.putText(image, name, (left + 6, bottom - 6), font, 0.3, (255, 255, 255), 1)
     return image
 
 def detect_faces(image):
@@ -36,7 +36,6 @@ def detect_faces(image):
 
 def recognize_faces(image, face_encodings, face_locations):
     suspects_index = 0
-    print len(face_encodings)
     for face_encoding in face_encodings:
         match = face_recognition.compare_faces(faces, face_encoding, tolerance=0.6)
         for i in range(len(match)):
