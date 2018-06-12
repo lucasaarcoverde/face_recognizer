@@ -4,4 +4,4 @@
 ![Alt text](test.jpg?raw=true "Test")
 
 ## This is the result that the algorithm return
-![Alt text](result.jpg?raw=true "Result")
+![Alt text](result.png?raw=true "Result")
