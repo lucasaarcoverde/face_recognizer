@@ -1,4 +1,4 @@
 # face_recognizer
 
-![Alt text](face_recognizer/test.jpg?raw=true "Test")
+![Alt text](test.jpg?raw=true "Test")
 
