@@ -1,9 +1,12 @@
 import face_recognition
 import cv2
+import sys
 from os import listdir
-
 faces = []
 suspects_name = []
+
+def DETECT_IMAGE():
+    return "image"
 
 def train_faces(image_path, suspect_name):
     print 'Loading image: ' + image_path
@@ -54,14 +57,45 @@ for subdir in listdir(path):
         image_path = path + "/" + subdir + "/" + image
         train_faces(image_path, suspect_name)
 
-image = cv2.imread("test.jpg")
 
-face_locations, face_encodings = detect_faces(image)
+def detect_image():
+    image = cv2.imread("test.jpg")
 
-result = recognize_faces(image, face_encodings, face_locations)
-while True:
-    cv2.imshow("result", result)
-    if cv2.waitKey(33) == ord('q'):
-        break
+    face_locations, face_encodings = detect_faces(image)
+
+    result = recognize_faces(image, face_encodings, face_locations)
+    while True:
+        cv2.imshow("result", result)
+
+        # Hit 'q' on the keyboard to quit!
+        if cv2.waitKey(33) == ord('q'):
+            break
 
 
+def detect_video():
+    ip_address = raw_input("Insert ip cam address: ")
+    ip_address = ip_address + "/videofeed"
+    video_capture = cv2.VideoCapture(ip_address)
+
+    while True:
+        ret, frame = video_capture.read()
+
+        frame = cv2.resize(frame, (0, 0), fx=0.50, fy=0.50, interpolation=cv2.INTER_AREA)
+
+        face_locations, face_encodings = detect_faces(frame)
+
+        result = recognize_faces(frame, face_encodings, face_locations)
+
+        cv2.imshow("result", result)
+        # Hit 'q' on the keyboard to quit!
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+
+if len(sys.argv) < 1:
+        raise ValueError("Argument is invalid!")
+recognition_mode = sys.argv[1]
+if (recognition_mode == DETECT_IMAGE()):
+    detect_image()
+else:
+    detect_video()
