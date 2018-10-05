@@ -61,7 +61,7 @@ face_locations, face_encodings = detect_faces(image)
 result = recognize_faces(image, face_encodings, face_locations)
 while True:
     cv2.imshow("result", result)
-    if cv2.waitKey(33) == ord('a'):
+    if cv2.waitKey(33) == ord('q'):
         break
 
 
