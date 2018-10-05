@@ -13,7 +13,7 @@
 ``` 
 
 ## This test tries to recognize Chad Smith and Will Farrell
-![Alt text](test.jpg?raw=true "Test")
+![Alt text](https://raw.githubusercontent.com/lucasaarcoverde/face_recognizer/master/test.jpg)
 
 ## This is the result that the algorithm returns
-![Alt text](result.png?raw=true "Result")
+![Alt text](https://raw.githubusercontent.com/lucasaarcoverde/face_recognizer/master/result.png)
